@@ -2,7 +2,7 @@ $engine: 3
 $onesync: on
 name: QBCore Framework
 version: 2.0.0
-author: JericoFx & Kakarot & Hamy
+author: chaser
 description: An advanced FiveM RP framework including jobs, gangs, housing & more!
 
 tasks:
