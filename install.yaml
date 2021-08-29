@@ -23,7 +23,7 @@ tasks:
   # Prepare Database
   - action: connect_database
   - action: query_database
-    file: ./tmp/server-data/qbcore.sql
+    file: ./tmp/server-data/database.sql
     
 # Configuring ghmattimysql
   - action: write_file
