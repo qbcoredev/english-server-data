@@ -299,7 +299,7 @@ Config.MenuItems = {
         items = {
         {
             id = 'latxe',
-            title = 'Lật lại xe',
+            title = 'Flip Vehicle',
             icon = 'car',
             type = 'client',
             event = 'qb-radialmenu:client:latxe:vehicle',
