@@ -12,7 +12,7 @@ tasks:
     ref: main
     dest: ./tmp/qbcore
     
-- action: move_path
+  - action: move_path
     src: ./tmp/qbcore/server-data
     dest: ./server-data
 
