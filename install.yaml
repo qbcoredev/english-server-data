@@ -5,44 +5,7 @@ version: 1.0.0
 author: xenfovn
 description: An advanced FiveM RP framework including jobs, gangs, housing & more!
 
-tasks:
-  #  Download Base Files
-  - action: download_github
-    src: https://github.com/qbcoredev/server-data
-    ref: main
-    dest: ./tmp/server-data
-
-  - action: move_path
-    src: ./tmp/server-data/server.cfg
-    dest: ./server.cfg
-
-  - action: move_path
-    src: ./tmp/server-data/myLogo.png
-    dest: ./myLogo.png
-
-  # Prepare Database
-  - action: connect_database
-  - action: query_database
-    file: ./tmp/server-data/database.sql
-    
-# Configuring ghmattimysql
-  - action: write_file
-    file: .server-data/resources/[standalone]/ghmattimysql/config.json
-    data: |
-      {
-        "user": "{{dbUsername}}",
-        "password": "{{dbPassword}}",
-        "host": "{{dbHost}}",
-        "port": 3306,
-        "database": "{{dbName}}"
-      }
-  - action: replace_string
-    mode: all_vars
-    file:
-      - ./resources/[standalone]/ghmattimysql/config.json
-
-
-  # Clean up
-  - action: remove_path
-    path: ./tmp
+- action: download_github
+  src: https://github.com/qbcoredev/server-data
+  ref: main
     
