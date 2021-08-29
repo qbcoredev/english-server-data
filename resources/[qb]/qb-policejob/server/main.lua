@@ -739,7 +739,7 @@ QBCore.Commands.Add("spikestrip", "Place Spike Strip (Police Only)", {}, false, 
     end
 end)
 
-QBCore.Commands.Add("grantlicense", "Grant a license to someone", {{name="id", help="ID of a person"},{name="license", help="License Type"}}, true, function(source, args)
+QBCore.Commands.Add("revokelicense", "Revoke a license from someone", {{name="id", help="ID of a person"},{name="license", help="License Type"}}, true, function(source, args)
     local source = source
     local Player = QBCore.Functions.GetPlayer(source)
     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.grade.level >= 2 then
