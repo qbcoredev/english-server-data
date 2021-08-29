@@ -10,24 +10,24 @@ tasks:
   - action: download_github
     src: https://github.com/qbcoredev/server-data
     ref: main
-    dest: ./tmp/qbcore
+    dest: ./tmp/server-data1
     
   - action: move_path
-    src: ./tmp/qbcore/server-data
-    dest: ./server-data
+    src: ./tmp/server-data1/resources
+    dest: ./resources
 
   - action: move_path
-    src: ./tmp/qbcore/server.cfg
+    src: ./tmp/server-data1/server.cfg
     dest: ./server.cfg
 
   - action: move_path
-    src: ./tmp/qbcore/myLogo.png
+    src: ./tmp/server-data1/myLogo.png
     dest: ./myLogo.png
 
   # Prepare Database
   - action: connect_database
   - action: query_database
-    file: ./tmp/qbcore/database.sql
+    file: ./tmp/server-data1/database.sql
     
 
   # Configuring ghmattimysql
