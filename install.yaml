@@ -8,4 +8,6 @@ description: An advanced FiveM RP framework including jobs, gangs, housing & mor
 - action: download_github
   src: https://github.com/qbcoredev/server-data
   ref: main
-    
+  subpath: resources
+  dest: ./resources
+
