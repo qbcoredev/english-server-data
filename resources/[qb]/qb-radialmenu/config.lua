@@ -297,7 +297,14 @@ Config.MenuItems = {
         title = 'Vehicle',
         icon = 'car',
         items = {
-            {
+        {
+            id = 'latxe'
+            title = 'Lật lại xe'
+            icon = 'car',
+            type = 'client',
+            event = 'qb-radialmenu:client:latxe:vehicle',
+            shouldClose = true
+        }, {
                 id = 'vehicledoors',
                 title = 'Vehicle Doors',
                 icon = 'car-side',
