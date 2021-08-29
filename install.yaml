@@ -1,13 +1,49 @@
 $engine: 3
 $onesync: on
-name: QBCore Framework Vietnam
-version: 1.0.0
-author: xenfovn
+name: QBCore Framework
+version: 2.0.0
+author: JericoFx & Kakarot & Hamy
 description: An advanced FiveM RP framework including jobs, gangs, housing & more!
 
-- action: download_github
-  src: https://github.com/qbcoredev/server-data
-  ref: main
-  subpath: resources
-  dest: ./resources
+tasks:
+  #  Download Base Files
+  - action: download_github
+    src: https://github.com/qbcoredev/server-data
+    ref: main
+    dest: ./tmp/qbcore
+    
+- action: move_path
+    src: ./tmp/qbcore/server-data
+    dest: ./server-data
+
+  - action: move_path
+    src: ./tmp/qbcore/server.cfg
+    dest: ./server.cfg
+
+  - action: move_path
+    src: ./tmp/qbcore/myLogo.png
+    dest: ./myLogo.png
+
+  # Prepare Database
+  - action: connect_database
+  - action: query_database
+    file: ./tmp/qbcore/database.sql
+    
+
+  # Configuring ghmattimysql
+  - action: write_file
+    file: ./resources/[standalone]/ghmattimysql/config.json
+    data: |
+      {
+        "user": "{{dbUsername}}",
+        "password": "{{dbPassword}}",
+        "host": "{{dbHost}}",
+        "port": 3306,
+        "database": "{{dbName}}"
+      }
+  - action: replace_string
+    mode: all_vars
+    file:
+      - ./resources/[standalone]/ghmattimysql/config.json
+
 
