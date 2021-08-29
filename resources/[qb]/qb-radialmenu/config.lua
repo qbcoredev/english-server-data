@@ -298,8 +298,8 @@ Config.MenuItems = {
         icon = 'car',
         items = {
         {
-            id = 'latxe
-            title = 'Lật lại xe
+            id = 'latxe'
+            title = 'Lật lại xe'
             icon = 'car',
             type = 'client',
             event = 'qb-radialmenu:client:latxe:vehicle',
