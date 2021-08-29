@@ -314,3 +314,35 @@ function DrawText3Ds(x, y, z, text)
     DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
     ClearDrawOrigin()
 end
+
+
+
+
+RegisterNetEvent('qb-radialmenu:client:latxe:vehicle')
+AddEventHandler('qb-radialmenu:client:latxe:vehicle', function()
+
+    local xe = QBCore.Functions.GetClosestVehicle()
+    local vitrixe = GetEntityCoords(xe)
+    local vitringuoi = GetEntityCoords(PlayerPedId())
+    local khoangcach = #(vitrixe - vitringuoi)
+    print(khoangcach)
+    if xe ~= 0 and khoangcach < 2.0 then
+        QBCore.Functions.Progressbar("lat-xe", "Đang lật xe..", math.random(10000, 15000), false, true, {
+            disableMovement = true,
+            disableCarMovement = false,
+            disableMouse = false,
+            disableCombat = true,
+        }, {
+            animDict = "random@mugging4",
+            anim = "struggle_loop_b_thief",
+            flags = 49,
+        }, {}, {}, function() -- Done
+             SetVehicleOnGroundProperly(xe)
+             QBCore.Functions.Notify("Đã lật được xe", "success")
+        end, function()
+            QBCore.Functions.Notify("Đã hủy..", "error")
+        end)
+    else
+        QBCore.Functions.Notify("Không có phương tiện gần..", "error")
+    end
+end)
