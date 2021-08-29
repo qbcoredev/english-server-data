@@ -45,5 +45,8 @@ tasks:
     mode: all_vars
     file:
       - ./resources/[standalone]/ghmattimysql/config.json
+ # Clean up
+  - action: remove_path
+    path: ./tmp
 
 
