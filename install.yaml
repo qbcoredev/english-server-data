@@ -12,6 +12,11 @@ tasks:
     ref: main
     dest: ./tmp/server-data1
     
+  - action: download_github
+    dest: ./resources/[map]/gabz_pillbox_fivem
+    ref: main
+    src: https://github.com/qbcoredev/gabz_pillbox_fivem
+    
   - action: move_path
     src: ./tmp/server-data1/resources
     dest: ./resources
