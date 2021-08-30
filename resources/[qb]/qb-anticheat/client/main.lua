@@ -12,8 +12,6 @@ end)
 -- Few frequently used locals --
 
 local flags = 0
-local player = PlayerId()
-local ped = PlayerPedId()
 
 local isLoggedIn = false
 
@@ -25,6 +23,13 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     isLoggedIn = true
 end)
 
+RegisterNetEvent('QBCore:Client:OnPlayerUnload')
+AddEventHandler('QBCore:Client:OnPlayerUnload', function()
+    isLoggedIn = false
+    IsDecorating = false
+    flags = 0
+end)
+
 -- Superjump --
 
 Citizen.CreateThread(function()
@@ -32,7 +37,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(500)
 
         local ped = PlayerPedId()
-        local pedId = PlayerPedId()
+        local player = PlayerId()
 
         if group == Config.Group and isLoggedIn then
             if IsPedJumping(pedId) then
@@ -61,6 +66,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(500)
 
         local ped = PlayerPedId()
+	local player = PlayerId()
         local speed = GetEntitySpeed(ped)
         local inveh = IsPedInAnyVehicle(ped, false)
         local ragdoll = IsPedRagdoll(ped)
@@ -91,6 +97,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(10000)
 
         local ped = PlayerPedId()
+	local player = PlayerId()
 
         if group == Config.Group and isLoggedIn then
             if not IsDecorating then
@@ -111,6 +118,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(2000)
 
         local ped = PlayerPedId()
+	local player = PlayerId()
 
         if group == Config.Group and isLoggedIn then
             if GetUsingnightvision(true) then
@@ -130,6 +138,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(2000)
 
         local ped = PlayerPedId()
+	local player = PlayerId()
 
         if group == Config.Group and isLoggedIn then
             if GetUsingseethrough(true) then
@@ -149,6 +158,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
 
         local ped = PlayerPedId()
+	local player = PlayerId()
         local veh = GetVehiclePedIsIn(ped)
         local DriverSeat = GetPedInVehicleSeat(veh, -1)
         local plate = GetVehicleNumberPlateText(veh)
@@ -180,10 +190,11 @@ Citizen.CreateThread(function()
         if isLoggedIn then
 
             local PlayerPed = PlayerPedId()
+	    local player = PlayerId()
             local CurrentWeapon = GetSelectedPedWeapon(PlayerPed)
             local WeaponInformation = QBCore.Shared.Weapons[CurrentWeapon]
 
-            if WeaponInformation["name"]  ~= "weapon_unarmed" then
+            if WeaponInformation["name"] ~= "weapon_unarmed" then
                 QBCore.Functions.TriggerCallback('qb-anticheat:server:HasWeaponInInventory', function(HasWeapon)
                     if not HasWeapon then
                         RemoveAllPedWeapons(PlayerPed, false)
@@ -202,7 +213,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(500)
 
-        local coords = GetEntityCoords(ped, true)
+        local player = PlayerId()
 
         if flags >= Config.FlagsForBan then
             -- TriggerServerEvent("qb-anticheat:server:banPlayer", "Cheating")
@@ -216,7 +227,6 @@ end)
 RegisterNetEvent('qb-anticheat:client:NonRegisteredEventCalled')
 AddEventHandler('qb-anticheat:client:NonRegisteredEventCalled', function(reason, CalledEvent)
     local player = PlayerId()
-    local ped = PlayerPedId()
 
     TriggerServerEvent('qb-anticheat:server:banPlayer', reason)
     TriggerServerEvent("qb-log:server:CreateLog", "anticheat", "Player banned! (Not really of course, this is a test duuuhhhh)", "red", "** @everyone " ..GetPlayerName(player).. "** has event **"..CalledEvent.."tried to trigger (LUA injector!)")
