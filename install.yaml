@@ -30,9 +30,19 @@ tasks:
     file: ./tmp/server-data1/database.sql
 
   - action: download_github
-    dest: ./resources/[map]/gabz_pillbox_fivem
+    dest: ./resources/[map]/prison_map
     ref: main
-    src: https://github.com/qbcoredev/gabz_pillbox_fivem
+    src: https://github.com/qbcore-framework/prison_map
+    
+  - action: download_github
+    dest: ./resources/[map]/hospital_map
+    ref: main
+    src: https://github.com/qbcore-framework/hospital_map
+    
+  - action: download_github
+    dest: ./resources/[map]/breze_benefactor
+    ref: main
+    src: https://github.com/qbcore-framework/breze_benefactor
  
 
 
