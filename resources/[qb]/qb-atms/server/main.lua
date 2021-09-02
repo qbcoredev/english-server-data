@@ -120,7 +120,7 @@ AddEventHandler('qb-atms:server:doAccountWithdraw', function(data)
 
         local dailyWith = tonumber(dailyWithdraws[cardHolder]) + tonumber(data.amount)
 
-        if dailyWith < 5000 then
+        if dailyWith < Config.DailyLimit then
             local banking = {}
             if xCH ~= nil then
                 local bank = xCH.Functions.GetMoney('bank')
