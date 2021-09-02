@@ -9,7 +9,11 @@ Config.Locations = {
         [2] = vector4(-254.88, 6324.5, 32.58, 0.0),
     },    
     ["vehicle"] = {
-	@@ -17,28 +17,24 @@ Config.Locations = {
+        [1] = vector4(294.578, -574.761, 43.179, 35.792),
+        [2] = vector4(-234.28, 6329.16, 32.15, 222.5),
+    },
+    ["helicopter"] = {
+        [1] = vector4(351.58, -587.45, 74.16, 160.5),
         [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
     },    
     ["armory"] = {
@@ -31,6 +35,10 @@ Config.Locations = {
         [6] = {coords = vector4(360.32, -587.19, 43.02, 152.08), taken = false, model = -1091386327},
         [7] = {coords = vector4(349.82, -583.33, 43.02, 152.08), taken = false, model = -1091386327}, 
         [8] = {coords = vector4(326.98, -576.17, 43.02, 152.08), taken = false, model = -1091386327},
+    }, 
+    ["stations"] = {
+        [1] = {label = "Doctor's Post Paleto", coords = vector4(-254.88, 6324.5, 32.58, 3.5)},
+        [2] = {label = "Pillbox Hospital", coords = vector4(304.27, -600.33, 43.28, 272.249)}
     }
 }
 
